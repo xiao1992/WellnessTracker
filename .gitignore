@@ -1,0 +1,29 @@
+# Dependencies
+node_modules
+
+# Build outputs
+dist
+dist-ssr
+server/public
+
+# Environment variables (contains sensitive database credentials)
+.env
+.env.local
+.env.production
+.env.development
+
+# OS files
+.DS_Store
+
+# Development artifacts
+cookies.txt
+attached_assets/
+vite.config.ts.*
+*.tar.gz
+
+# Database migrations (use drizzle push instead)
+migrations/
+
+# Logs
+*.log
+npm-debug.log*

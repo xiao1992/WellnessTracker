@@ -1,0 +1,159 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: hsl(0, 0%, 100%);
+  --foreground: hsl(28, 71%, 5%);
+  --muted: hsl(60, 4.8%, 95.9%);
+  --muted-foreground: hsl(25, 5.3%, 44.7%);
+  --popover: hsl(0, 0%, 100%);
+  --popover-foreground: hsl(28, 71%, 5%);
+  --card: hsl(0, 0%, 100%);
+  --card-foreground: hsl(28, 71%, 5%);
+  --border: hsl(20, 5.9%, 90%);
+  --input: hsl(20, 5.9%, 90%);
+  --primary: hsl(207, 90%, 54%);
+  --primary-foreground: hsl(211, 100%, 99%);
+  --secondary: hsl(60, 4.8%, 95.9%);
+  --secondary-foreground: hsl(24, 9.8%, 10%);
+  --accent: hsl(60, 4.8%, 95.9%);
+  --accent-foreground: hsl(24, 9.8%, 10%);
+  --destructive: hsl(0, 84.2%, 60.2%);
+  --destructive-foreground: hsl(60, 9.1%, 97.8%);
+  --ring: hsl(28, 71%, 5%);
+  --radius: 0.75rem;
+  
+  /* Health App Colors */
+  --health-blue: hsl(207, 100%, 50%);
+  --wellness-green: hsl(145, 63%, 49%);
+  --energy-orange: hsl(34, 100%, 50%);
+  --soft-white: hsl(240, 33%, 97%);
+  --deep-black: hsl(216, 13%, 11%);
+  --bright-green: hsl(145, 77%, 49%);
+}
+
+.dark {
+  --background: hsl(240, 10%, 3.9%);
+  --foreground: hsl(0, 0%, 98%);
+  --muted: hsl(240, 3.7%, 15.9%);
+  --muted-foreground: hsl(240, 5%, 64.9%);
+  --popover: hsl(240, 10%, 3.9%);
+  --popover-foreground: hsl(0, 0%, 98%);
+  --card: hsl(240, 10%, 3.9%);
+  --card-foreground: hsl(0, 0%, 98%);
+  --border: hsl(240, 3.7%, 15.9%);
+  --input: hsl(240, 3.7%, 15.9%);
+  --primary: hsl(207, 90%, 54%);
+  --primary-foreground: hsl(211, 100%, 99%);
+  --secondary: hsl(240, 3.7%, 15.9%);
+  --secondary-foreground: hsl(0, 0%, 98%);
+  --accent: hsl(240, 3.7%, 15.9%);
+  --accent-foreground: hsl(0, 0%, 98%);
+  --destructive: hsl(0, 62.8%, 30.6%);
+  --destructive-foreground: hsl(0, 0%, 98%);
+  --ring: hsl(240, 4.9%, 83.9%);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased;
+    background-color: var(--soft-white);
+    color: var(--deep-black);
+    font-family: 'Inter', 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+}
+
+@layer utilities {
+  .health-gradient {
+    background: linear-gradient(135deg, var(--health-blue) 0%, var(--wellness-green) 100%);
+  }
+  
+  .wellness-gradient {
+    background: linear-gradient(135deg, var(--wellness-green) 0%, var(--bright-green) 100%);
+  }
+  
+  .energy-gradient {
+    background: linear-gradient(135deg, var(--energy-orange) 0%, hsl(24, 100%, 50%) 100%);
+  }
+  
+  .health-card {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 1.5rem;
+    background: var(--card);
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  }
+  
+  .health-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 20px 40px rgba(0, 122, 255, 0.1);
+  }
+  
+  .metric-slider {
+    -webkit-appearance: none;
+    appearance: none;
+    height: 8px;
+    border-radius: 4px;
+    background: linear-gradient(to right, var(--health-blue) 0%, var(--health-blue) var(--slider-value, 50%), hsl(0, 0%, 90%) var(--slider-value, 50%), hsl(0, 0%, 90%) 100%);
+    outline: none;
+    cursor: pointer;
+  }
+  
+  .metric-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: var(--health-blue);
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0, 122, 255, 0.3);
+  }
+  
+  .metric-slider::-moz-range-thumb {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: var(--health-blue);
+    cursor: pointer;
+    border: none;
+    box-shadow: 0 2px 8px rgba(0, 122, 255, 0.3);
+  }
+  
+  .progress-ring {
+    transform: rotate(-90deg);
+  }
+  
+  .progress-circle {
+    fill: none;
+    stroke-width: 8;
+    stroke-linecap: round;
+    transition: stroke-dashoffset 0.5s ease;
+  }
+  
+  .calendar-day {
+    transition: all 0.2s ease;
+  }
+  
+  .calendar-day:hover {
+    transform: scale(1.05);
+  }
+  
+  .floating-action {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 50;
+  }
+  
+  @media (max-width: 768px) {
+    .floating-action {
+      bottom: 80px;
+      right: 16px;
+    }
+  }
+}
