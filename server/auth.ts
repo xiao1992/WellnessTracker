@@ -39,8 +39,9 @@ export function setupAuth(app: Express) {
     saveUninitialized: false,
     store: new PostgresSessionStore({
       conString: process.env.DATABASE_URL,
-      createTableIfMissing: true,
-      tableName: 'session', // Explicitly set table name
+      createTableIfMissing: false,
+      tableName: 'session', 
+      errorLog: () => {},
     }),
   };
 
