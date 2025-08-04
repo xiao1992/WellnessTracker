@@ -39,14 +39,8 @@ export function setupAuth(app: Express) {
     saveUninitialized: false,
     store: new PostgresSessionStore({
       conString: process.env.DATABASE_URL,
-      createTableIfMissing: true,
+      createTableIfMissing: false,
       tableName: 'session', 
-      errorLog: (error) => {
-        // Only log errors that aren't the "already exists" error
-        if (!error.message.includes('already exists')) {
-          console.error('Session store error:', error);
-        }
-      },
     }),
   };
 
